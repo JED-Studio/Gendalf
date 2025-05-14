@@ -1,3 +1,14 @@
+<script>
+import { defineComponent } from 'vue'
+import AppVector from './icons/AppVector.vue'
+export default defineComponent({
+  components: {
+    AppVector,
+  },
+  setup() {},
+})
+</script>
+
 <template>
   <div class="app-recruitingForm__section">
     <div class="app-gendalf__container">
@@ -13,22 +24,22 @@
           <h3>Выберите категорию занятости</h3>
           <div class="app-recruitingForm__checkboxes">
             <div class="app-recruitingForm__checkbox">
-              <input type="checkbox" />
+              <input type="radio" />
               <p>Работа в офисе</p>
             </div>
             <div class="app-recruitingForm__checkbox">
-              <input type="checkbox" />
+              <input type="radio" />
               <p>Стажировка</p>
             </div>
             <div class="app-recruitingForm__checkbox">
-              <input type="checkbox" />
+              <input type="radio" />
               <p>Удаленная работа</p>
             </div>
           </div>
 
           <textarea placeholder="Ваши вопросы"></textarea>
 
-          <div>
+          <div class="app-recruitingForm__buttons">
             <div class="app-recruitingForm__resume">Прикрепить резюме</div>
             <div class="app-recruitingForm__sign-up">Записаться</div>
           </div>
@@ -39,6 +50,10 @@
 </template>
 
 <style scoped>
+.app-recruitingForm__inputs {
+  margin-bottom: 17px;
+}
+
 .app-recruitingForm__resume {
   display: inline-block;
   border-radius: 5px;
@@ -48,7 +63,6 @@
   cursor: pointer;
   max-width: 270px;
   width: 100%;
-  margin-right: 63px;
   transition: all 0.3s ease;
   border: 1px solid rgba(155, 204, 55, 1);
 }
@@ -80,7 +94,7 @@
   position: relative;
   width: 100%;
   height: 840px;
-  background-image: url('/menu/GendalfOffice.png');
+  background-image: url('/value/Fon2.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -110,10 +124,16 @@
   background-color: rgba(0, 183, 236, 1);
   padding: 50px;
 }
-
-.app-recruitingForm > h2 {
+.app-recruitingForm > h3 {
   font-weight: 300;
   font-size: 36px;
+  margin-bottom: 18px;
+  margin-bottom: 10px;
+}
+
+.app-recruitingForm > h2 {
+  font-weight: 700;
+  font-size: 18px;
   margin-bottom: 18px;
 }
 
@@ -122,7 +142,7 @@
   width: 100%;
   max-width: 568px;
   margin: 0 auto;
-  margin-bottom: 10px;
+  margin-bottom: 17px;
   padding: 10px 20px;
   border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -151,11 +171,29 @@
   width: 100%;
   max-width: 568px;
   margin: 0 auto;
+  margin-bottom: 17px;
 }
 
 .app-recruitingForm__checkbox {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  gap: 6px;
+}
+
+.app-recruitingForm__checkbox > p {
+  font-weight: 400;
+  font-size: 18px;
+}
+.app-recruitingForm__checkbox > input {
+  margin: 0;
+}
+
+.app-recruitingForm__buttons {
+  width: 100%;
+  max-width: 568px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
 </style>

@@ -21,6 +21,24 @@ export default defineComponent({
         title:
           'Автоматизированный УСН и путевые листы: дайджест новостей за март 2022. Автоматизированный УСН и путевые листы',
       },
+      {
+        img: 'adobestock/AdobeStock4.png',
+        title: 'Почему стоит работать программистом в 2022 году',
+      },
+      {
+        img: 'adobestock/AdobeStock5.png',
+        title:
+          'Автоматизированный УСН и путевые листы: дайджест новостей за март 2022. Автоматизированный УСН и путевые листы',
+      },
+      {
+        img: 'adobestock/AdobeStock4.png',
+        title: 'Почему стоит работать программистом в 2022 году',
+      },
+      {
+        img: 'adobestock/AdobeStock5.png',
+        title:
+          'Автоматизированный УСН и путевые листы: дайджест новостей за март 2022. Автоматизированный УСН и путевые листы',
+      },
     ]
 
     return {
@@ -54,6 +72,10 @@ export default defineComponent({
 </template>
 
 <style scoped>
+.app-nowStream__cards::-webkit-scrollbar {
+  display: none;
+}
+
 .app-nowStream {
   position: relative;
   margin-bottom: 47px;
@@ -80,9 +102,11 @@ export default defineComponent({
 }
 
 .app-nowStream__cards {
+  width: 100%;
+  gap: 30px;
   display: flex;
-  gap: 28px;
-  justify-content: center;
+  overflow-x: auto;
+  padding: 5px 0;
 }
 
 .app-nowStream__card {
@@ -95,6 +119,7 @@ export default defineComponent({
   border-radius: 5px;
   box-shadow: 0px 0px 5px 0px rgba(102, 102, 102, 0.7);
   border: 2px solid #fff;
+  min-width: calc(1088px / 4);
 }
 
 .app-nowStream__card img {

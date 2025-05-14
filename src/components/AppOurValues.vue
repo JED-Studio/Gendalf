@@ -61,6 +61,10 @@ export default defineComponent({
 </template>
 
 <style>
+.app-ourValues {
+  padding: 31px 0 51px 0;
+}
+
 .app-ourValues__section {
   background-color: rgba(233, 233, 233, 1);
 }
@@ -98,7 +102,6 @@ export default defineComponent({
   font-size: 16px;
   line-height: 22px;
   text-align: center;
-  margin-bottom: 90px;
 }
 
 .app-ourValues__images {

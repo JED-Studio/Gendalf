@@ -158,6 +158,12 @@
   color: rgb(75, 75, 75);
   font-weight: 700;
 }
+
+@media (max-width: 768px) {
+  .app-questions > img {
+    display: none;
+  }
+}
 </style>
 
 <script>

@@ -4,14 +4,19 @@
       <div class="app-opportunities">
         <h2>Инфраструктура для твоего развития и роста</h2>
         <div class="app-opportunities__content">
-          <p>
-            Мы создаем платформу для профессионального развития каждого сотрудника. Главная цель –
-            дать возможность учиться, работать и получать удовольствие от каждой успешной задачи. О
-            возможностях личностного роста в ГЭНДАЛЬФ расскажет руководитель Департамента персонала
-            и карьеры Татьяна Арсенович.
-          </p>
-          <div>
-            <img src="/public/Видео.png" alt="" />
+          <div class="app-opportunities__text">
+            <p>
+              Мы создаем платформу для профессионального развития каждого сотрудника. Главная цель –
+              дать возможность учиться, работать и получать удовольствие от каждой успешной задачи.
+            </p>
+            <p>
+              О возможностях личностного роста в ГЭНДАЛЬФ расскажет руководитель Департамента
+              персонала и карьеры Татьяна Арсенович.
+            </p>
+          </div>
+          <div class="app-opportunities__images">
+            <img class="app-opportunities__images-play" src="/public/Воспроизведение.png" alt="" />
+            <img class="app-opportunities__images-video" src="/public/Видео.png" alt="" />
           </div>
         </div>
       </div>
@@ -20,6 +25,21 @@
 </template>
 
 <style>
+.app-opportunities__images-video {
+  width: 100%;
+}
+
+.app-opportunities__images {
+  position: relative;
+}
+
+.app-opportunities__images-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .app-opportunities__section {
   background: linear-gradient(
     to right,
@@ -46,11 +66,12 @@
   align-items: center;
 }
 
-.app-opportunities__content > p {
-  max-width: 494px;
+.app-opportunities__text > p {
+  max-width: 492px;
   font-weight: 400;
   font-size: 18px;
   color: rgba(102, 102, 102, 1);
+  margin-bottom: 10px;
 }
 
 @media (max-width: 768px) {
