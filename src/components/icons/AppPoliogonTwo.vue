@@ -1,0 +1,97 @@
+<template>
+  <svg
+    class="app-poliogonTwo"
+    width="114"
+    height="127"
+    viewBox="0 0 114 127"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <foreignObject x="-7.82751" y="-11.4795" width="129.655" height="141.6"
+      ><div
+        xmlns="http://www.w3.org/1999/xhtml"
+        style="
+          backdrop-filter: blur(6px);
+          clip-path: url(#bgblur_0_3_150_clip_path);
+          height: 100%;
+          width: 100%;
+        "
+      ></div
+    ></foreignObject>
+    <g filter="url(#filter0_d_3_150)" data-figma-bg-blur-radius="12">
+      <path
+        d="M53.0495 1.56375C55.4994 0.172468 58.5006 0.172471 60.9505 1.56375L105.778 27.0207C108.281 28.4421 109.828 31.0987 109.828 33.9772L109.828 84.6634C109.828 87.5419 108.281 90.1985 105.778 91.62L60.9505 117.077C58.5006 118.468 55.4994 118.468 53.0495 117.077L8.22193 91.6199C5.71887 90.1985 4.17245 87.5419 4.17245 84.6634L4.17245 33.9772C4.17245 31.0987 5.71888 28.4421 8.22193 27.0207L53.0495 1.56375Z"
+        fill="url(#paint0_linear_3_150)"
+        fill-opacity="0.3"
+        shape-rendering="crispEdges"
+      />
+      <path
+        d="M53.543 2.43359C55.6196 1.25429 58.1489 1.2177 60.2539 2.32324L60.457 2.43359L105.284 27.8906C107.474 29.1344 108.827 31.4589 108.827 33.9775L108.827 84.6631C108.827 87.103 107.558 89.3614 105.487 90.6309L105.284 90.75L60.457 116.207C58.3804 117.386 55.8511 117.423 53.7461 116.317L53.543 116.207L8.71582 90.75C6.52571 89.5062 5.17285 87.1817 5.17285 84.6631L5.17285 33.9775C5.17285 31.5376 6.44216 29.2793 8.5127 28.0098L8.71582 27.8906L53.543 2.43359Z"
+        stroke="url(#paint1_linear_3_150)"
+        stroke-opacity="0.5"
+        stroke-width="2"
+        shape-rendering="crispEdges"
+      />
+    </g>
+    <defs>
+      <filter
+        id="filter0_d_3_150"
+        x="-7.82751"
+        y="-11.4795"
+        width="129.655"
+        height="141.6"
+        filterUnits="userSpaceOnUse"
+        color-interpolation-filters="sRGB"
+      >
+        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feColorMatrix
+          in="SourceAlpha"
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+          result="hardAlpha"
+        />
+        <feOffset dy="4" />
+        <feGaussianBlur stdDeviation="2" />
+        <feComposite in2="hardAlpha" operator="out" />
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3_150" />
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3_150" result="shape" />
+      </filter>
+      <clipPath id="bgblur_0_3_150_clip_path" transform="translate(7.82751 11.4795)">
+        <path
+          d="M53.0495 1.56375C55.4994 0.172468 58.5006 0.172471 60.9505 1.56375L105.778 27.0207C108.281 28.4421 109.828 31.0987 109.828 33.9772L109.828 84.6634C109.828 87.5419 108.281 90.1985 105.778 91.62L60.9505 117.077C58.5006 118.468 55.4994 118.468 53.0495 117.077L8.22193 91.6199C5.71887 90.1985 4.17245 87.5419 4.17245 84.6634L4.17245 33.9772C4.17245 31.0987 5.71888 28.4421 8.22193 27.0207L53.0495 1.56375Z"
+        />
+      </clipPath>
+      <linearGradient
+        id="paint0_linear_3_150"
+        x1="92.8428"
+        y1="100.534"
+        x2="27.9935"
+        y2="15.0009"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#00B7EC" />
+        <stop offset="1" stop-color="#00B7EC" stop-opacity="0.33" />
+      </linearGradient>
+      <linearGradient
+        id="paint1_linear_3_150"
+        x1="13.2622"
+        y1="11.9245"
+        x2="79.4345"
+        y2="120.301"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="white" />
+        <stop offset="1" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+  </svg>
+</template>
+
+<style>
+.app-poliogonTwo {
+  left: 185px;
+  position: absolute;
+  bottom: -30px;
+}
+</style>
