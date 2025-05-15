@@ -1,6 +1,5 @@
 <script>
 import { defineComponent } from 'vue'
-
 export default defineComponent({
   setup() {
     const items = [
@@ -53,15 +52,25 @@ export default defineComponent({
     <div class="app-gendalf__container">
       <div class="app-nowStream">
         <h2>Живая лента</h2>
-        <div class="app-nowStream__cards">
-          <div v-for="item in items" :key="item" class="app-nowStream__card">
+        <swiper-container
+          class="app-nowStream__cards"
+          :slides-per-view="'auto'"
+          :space-between="30"
+          :navigation="{
+            nextEl: '.app-nowStream__arrows-right',
+            prevEl: '.app-nowStream__arrows-left',
+          }"
+          :centered-slides="false"
+          :loop="false"
+        >
+          <swiper-slide v-for="item in items" :key="item" class="app-nowStream__card">
             <img :src="item.img" alt="" />
             <div class="app-nowStream__card-text">
               <p>{{ item.title }}</p>
               <div class="app-nowStream__card-button">Перейти к статье</div>
             </div>
-          </div>
-        </div>
+          </swiper-slide>
+        </swiper-container>
         <div class="app-nowStream__arrows">
           <img class="app-nowStream__arrows-left" src="/public/стрелка лева.png" alt="" />
           <img class="app-nowStream__arrows-right" src="/public/стрелка право.png" alt="" />
@@ -72,10 +81,6 @@ export default defineComponent({
 </template>
 
 <style scoped>
-.app-nowStream__cards::-webkit-scrollbar {
-  display: none;
-}
-
 .app-nowStream {
   position: relative;
   margin-bottom: 47px;
@@ -92,6 +97,7 @@ export default defineComponent({
   top: 50%;
   left: 0;
   cursor: pointer;
+  z-index: 10;
 }
 
 .app-nowStream__arrows-right {
@@ -99,14 +105,35 @@ export default defineComponent({
   top: 50%;
   right: 0;
   cursor: pointer;
+  z-index: 10;
 }
 
 .app-nowStream__cards {
-  width: 100%;
-  gap: 30px;
-  display: flex;
-  overflow-x: auto;
   padding: 5px 0;
+}
+
+@media (max-width: 1500px) {
+  .app-nowStream__cards {
+    max-width: calc(272px * 4 + 30px * 3);
+  }
+}
+
+@media (max-width: 1200px) {
+  .app-nowStream__cards {
+    max-width: calc(272px * 3 + 30px * 2);
+  }
+}
+
+@media (max-width: 900px) {
+  .app-nowStream__cards {
+    max-width: calc(272px * 2 + 30px * 1);
+  }
+}
+
+@media (max-width: 600px) {
+  .app-nowStream__cards {
+    max-width: 272px;
+  }
 }
 
 .app-nowStream__card {
@@ -114,23 +141,25 @@ export default defineComponent({
   flex-direction: column;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(7, 168, 219, 0.1));
   overflow: hidden;
-  width: 100%;
-  max-width: 272px;
+  height: 400px;
+  width: 272px !important;
   border-radius: 5px;
   box-shadow: 0px 0px 5px 0px rgba(102, 102, 102, 0.7);
   border: 2px solid #fff;
-  min-width: calc(1088px / 4);
+  flex-shrink: 0;
 }
 
 .app-nowStream__card img {
   width: 100%;
+
+  display: block;
 }
 
 .app-nowStream__card-text {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 25px 25px 25px 25px;
+  padding: 25px;
 }
 
 .app-nowStream__card-text > P {

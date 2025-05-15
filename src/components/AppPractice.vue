@@ -14,7 +14,7 @@
   position: relative;
   width: 100%;
   height: 415px;
-  background-image: url('/value/Vector.jpg');
+  background-image: url('/value/VectorFon.jpg');
   background-size: cover;
   background-position: center;
   display: flex;

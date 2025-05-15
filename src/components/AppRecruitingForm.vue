@@ -132,8 +132,8 @@ export default defineComponent({
 }
 
 .app-recruitingForm > h2 {
-  font-weight: 700;
-  font-size: 18px;
+  font-weight: 300;
+  font-size: 36px;
   margin-bottom: 18px;
 }
 
