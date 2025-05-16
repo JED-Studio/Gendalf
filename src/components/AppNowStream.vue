@@ -50,30 +50,32 @@ export default defineComponent({
 <template>
   <div class="app-nowStream__section">
     <div class="app-gendalf__container">
-      <div class="app-nowStream">
-        <h2>Живая лента</h2>
-        <swiper-container
-          class="app-nowStream__cards"
-          :slides-per-view="'auto'"
-          :space-between="30"
-          :navigation="{
-            nextEl: '.app-nowStream__arrows-right',
-            prevEl: '.app-nowStream__arrows-left',
-          }"
-          :centered-slides="false"
-          :loop="false"
-        >
-          <swiper-slide v-for="item in items" :key="item" class="app-nowStream__card">
-            <img :src="item.img" alt="" />
-            <div class="app-nowStream__card-text">
-              <p>{{ item.title }}</p>
-              <div class="app-nowStream__card-button">Перейти к статье</div>
-            </div>
-          </swiper-slide>
-        </swiper-container>
-        <div class="app-nowStream__arrows">
-          <img class="app-nowStream__arrows-left" src="/public/стрелка лева.png" alt="" />
-          <img class="app-nowStream__arrows-right" src="/public/стрелка право.png" alt="" />
+      <div class="app-nowStream__container">
+        <div class="app-nowStream">
+          <h2>Живая лента</h2>
+          <swiper-container
+            class="app-nowStream__cards"
+            :slides-per-view="'auto'"
+            :space-between="30"
+            :navigation="{
+              nextEl: '.app-nowStream__arrows-right',
+              prevEl: '.app-nowStream__arrows-left',
+            }"
+            :centered-slides="false"
+            :loop="false"
+          >
+            <swiper-slide v-for="item in items" :key="item" class="app-nowStream__card">
+              <img :src="item.img" alt="" />
+              <div class="app-nowStream__card-text">
+                <p>{{ item.title }}</p>
+                <div class="app-nowStream__card-button">Перейти к статье</div>
+              </div>
+            </swiper-slide>
+          </swiper-container>
+          <div class="app-nowStream__arrows">
+            <img class="app-nowStream__arrows-left" src="/public/стрелка лева.png" alt="" />
+            <img class="app-nowStream__arrows-right" src="/public/стрелка право.png" alt="" />
+          </div>
         </div>
       </div>
     </div>
@@ -81,10 +83,19 @@ export default defineComponent({
 </template>
 
 <style scoped>
+.swiper {
+  padding: 200px;
+}
+.app-nowStream__container {
+  width: 100%;
+  max-width: 1176px;
+  margin: 0 auto;
+}
 .app-nowStream {
   position: relative;
   margin-bottom: 47px;
 }
+
 .app-nowStream > h2 {
   font-family: 300;
   font-size: 36px;
@@ -108,31 +119,27 @@ export default defineComponent({
   z-index: 10;
 }
 
-.app-nowStream__cards {
-  padding: 5px 0;
-}
-
-@media (max-width: 1500px) {
+@media (max-width: 1300px) {
   .app-nowStream__cards {
     max-width: calc(272px * 4 + 30px * 3);
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1260px) {
   .app-nowStream__cards {
     max-width: calc(272px * 3 + 30px * 2);
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .app-nowStream__cards {
     max-width: calc(272px * 2 + 30px * 1);
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 660px) {
   .app-nowStream__cards {
-    max-width: 272px;
+    max-width: 277px;
   }
 }
 
@@ -147,6 +154,8 @@ export default defineComponent({
   box-shadow: 0px 0px 5px 0px rgba(102, 102, 102, 0.7);
   border: 2px solid #fff;
   flex-shrink: 0;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .app-nowStream__card img {
