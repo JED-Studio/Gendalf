@@ -50,13 +50,13 @@ export default defineComponent({
 <template>
   <div class="app-nowStream__section">
     <div class="app-gendalf__container">
-      <div class="app-nowStream__container">
-        <div class="app-nowStream">
-          <h2>Живая лента</h2>
+      <div class="app-nowStream">
+        <h2>Живая лента</h2>
+        <div class="app-nowStream__container">
           <swiper-container
             class="app-nowStream__cards"
             :slides-per-view="'auto'"
-            :space-between="30"
+            :space-between="15"
             :navigation="{
               nextEl: '.app-nowStream__arrows-right',
               prevEl: '.app-nowStream__arrows-left',
@@ -72,10 +72,10 @@ export default defineComponent({
               </div>
             </swiper-slide>
           </swiper-container>
-          <div class="app-nowStream__arrows">
-            <img class="app-nowStream__arrows-left" src="/public/стрелка лева.png" alt="" />
-            <img class="app-nowStream__arrows-right" src="/public/стрелка право.png" alt="" />
-          </div>
+        </div>
+        <div class="app-nowStream__arrows">
+          <img class="app-nowStream__arrows-left" src="/public/стрелка лева.png" alt="" />
+          <img class="app-nowStream__arrows-right" src="/public/стрелка право.png" alt="" />
         </div>
       </div>
     </div>
@@ -88,7 +88,7 @@ export default defineComponent({
 }
 .app-nowStream__container {
   width: 100%;
-  max-width: 1176px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 .app-nowStream {
@@ -97,7 +97,7 @@ export default defineComponent({
 }
 
 .app-nowStream > h2 {
-  font-family: 300;
+  font-weight: 300;
   font-size: 36px;
   color: rgba(0, 183, 236, 1);
   margin-bottom: 21px;
@@ -121,25 +121,19 @@ export default defineComponent({
 
 @media (max-width: 1300px) {
   .app-nowStream__cards {
-    max-width: calc(272px * 4 + 30px * 3);
-  }
-}
-
-@media (max-width: 1260px) {
-  .app-nowStream__cards {
-    max-width: calc(272px * 3 + 30px * 2);
+    max-width: calc(282px * 3 + 30px * 2);
   }
 }
 
 @media (max-width: 960px) {
   .app-nowStream__cards {
-    max-width: calc(272px * 2 + 30px * 1);
+    max-width: calc(286px * 2 + 30px * 1);
   }
 }
 
 @media (max-width: 660px) {
   .app-nowStream__cards {
-    max-width: 277px;
+    max-width: 300px;
   }
 }
 
@@ -156,6 +150,7 @@ export default defineComponent({
   flex-shrink: 0;
   margin-bottom: 5px;
   margin-top: 5px;
+  margin-left: 15px;
 }
 
 .app-nowStream__card img {
@@ -185,5 +180,12 @@ export default defineComponent({
   padding: 10px 20px;
   text-align: center;
   margin-top: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.app-nowStream__card-button:hover {
+  background-color: rgba(0, 183, 236, 1);
+  color: #fff;
 }
 </style>

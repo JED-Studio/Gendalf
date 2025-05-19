@@ -108,6 +108,7 @@ export default defineComponent({
   width: 100%;
   display: flex;
   overflow-x: auto;
+  gap: 37px;
 }
 
 .app-ourValues__image {

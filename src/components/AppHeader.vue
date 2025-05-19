@@ -160,7 +160,7 @@ nav > a:last-child {
 }
 
 /* Медиа-запрос для мобильной версии */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   header {
     background-color: rgb(255, 255, 255);
   }

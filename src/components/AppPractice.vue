@@ -65,5 +65,12 @@
   background-color: rgba(155, 204, 55, 1);
   color: #fff;
   cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(155, 204, 55, 1);
+}
+
+.app-practice__button:hover {
+  color: rgba(155, 204, 55, 1);
+  background-color: white;
 }
 </style>

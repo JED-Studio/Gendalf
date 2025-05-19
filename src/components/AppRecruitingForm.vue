@@ -1,19 +1,27 @@
 <script>
 import { defineComponent, ref } from 'vue'
+import AppVector from './icons/AppVector.vue'
 
 export default defineComponent({
-  components: {},
+  components: {
+    AppVector,
+  },
   setup() {
+    const svgColor = ref('#fff')
     const name = ref('')
     const phone = ref('')
     const email = ref('')
     const position = ref('')
+    const employmentCategory = ref(null)
+    const resumeFile = ref(null)
 
     const isValid = ref({
       name: true,
       phone: true,
       email: true,
       position: true,
+      employmentCategory: true,
+      resumeAttached: true,
     })
 
     const validateInputs = () => {
@@ -21,8 +29,16 @@ export default defineComponent({
       isValid.value.phone = phone.value.trim() !== ''
       isValid.value.email = email.value.trim() !== ''
       isValid.value.position = position.value.trim() !== ''
+      isValid.value.employmentCategory = employmentCategory.value !== null
+      isValid.value.resumeAttached = resumeFile.value !== null
+
       return (
-        isValid.value.name && isValid.value.phone && isValid.value.email && isValid.value.position
+        isValid.value.name &&
+        isValid.value.phone &&
+        isValid.value.email &&
+        isValid.value.position &&
+        isValid.value.employmentCategory &&
+        isValid.value.resumeAttached
       )
     }
 
@@ -31,7 +47,16 @@ export default defineComponent({
       if (allValid) {
         alert('Форма успешно отправлена!')
       } else {
-        alert('Пожалуйста, заполните все поля корректно.')
+        alert('Пожалуйста, заполните все поля корректно и прикрепите резюме.')
+      }
+    }
+
+    const onFileChange = (event) => {
+      const files = event.target.files
+      if (files && files.length > 0) {
+        resumeFile.value = files[0]
+      } else {
+        resumeFile.value = null
       }
     }
 
@@ -40,8 +65,12 @@ export default defineComponent({
       phone,
       email,
       position,
+      employmentCategory,
+      resumeFile,
       isValid,
       onSubmit,
+      onFileChange,
+      svgColor,
     }
   },
 })
@@ -52,110 +81,153 @@ export default defineComponent({
     <div class="app-gendalf__container">
       <div class="app-recruitingForm__containerFlex">
         <form class="app-recruitingForm" @submit.prevent>
-          <h2>Записаться на собеседование</h2>
-          <div class="app-recruitingForm__inputs">
-            <div class="app-recruitingForm__input-container">
-              <input
-                type="text"
-                placeholder="Как к вам обращаться?"
-                v-model="name"
-                :class="{ invalid: !isValid.name, valid: isValid.name && name }"
-              />
-              <img
-                v-if="!isValid.name"
-                src="/public/Group 179.png"
-                alt="Invalid"
-                class="status-icon"
-              />
-              <img
-                v-else-if="isValid.name && name"
-                src="/public/Group 180.png"
-                alt="Valid"
-                class="status-icon"
-              />
+          <div class="app-recruitingForm__form">
+            <h2>Записаться на собеседование</h2>
+            <div class="app-recruitingForm__inputs">
+              <div class="app-recruitingForm__input-container">
+                <input
+                  type="text"
+                  placeholder="Как к вам обращаться?"
+                  v-model="name"
+                  :class="{ invalid: !isValid.name, valid: isValid.name && name }"
+                />
+                <img
+                  v-if="!isValid.name"
+                  src="/public/Group 179.png"
+                  alt="Invalid"
+                  class="status-icon"
+                />
+                <img
+                  v-else-if="isValid.name && name"
+                  src="/public/Group 180.png"
+                  alt="Valid"
+                  class="status-icon"
+                />
+              </div>
+              <div class="app-recruitingForm__input-container">
+                <input
+                  type="text"
+                  placeholder="Телефон"
+                  v-model="phone"
+                  :class="{ invalid: !isValid.phone, valid: isValid.phone && phone }"
+                />
+                <img
+                  v-if="!isValid.phone"
+                  src="/public/Group 179.png"
+                  alt="Invalid"
+                  class="status-icon"
+                />
+                <img
+                  v-else-if="isValid.phone && phone"
+                  src="/public/Group 180.png"
+                  alt="Valid"
+                  class="status-icon"
+                />
+              </div>
+              <div class="app-recruitingForm__input-container">
+                <input
+                  type="text"
+                  placeholder="Email"
+                  v-model="email"
+                  :class="{ invalid: !isValid.email, valid: isValid.email && email }"
+                />
+                <img
+                  v-if="!isValid.email"
+                  src="/public/Group 179.png"
+                  alt="Invalid"
+                  class="status-icon"
+                />
+                <img
+                  v-else-if="isValid.email && email"
+                  src="/public/Group 180.png"
+                  alt="Valid"
+                  class="status-icon"
+                />
+              </div>
+              <div class="app-recruitingForm__input-container">
+                <input
+                  type="text"
+                  placeholder="Желаемая должность"
+                  v-model="position"
+                  :class="{ invalid: !isValid.position, valid: isValid.position && position }"
+                />
+                <img
+                  v-if="!isValid.position"
+                  src="/public/Group 179.png"
+                  alt="Invalid"
+                  class="status-icon"
+                />
+                <img
+                  v-else-if="isValid.position && position"
+                  src="/public/Group 180.png"
+                  alt="Valid"
+                  class="status-icon"
+                />
+              </div>
             </div>
-            <div class="app-recruitingForm__input-container">
-              <input
-                type="text"
-                placeholder="Телефон"
-                v-model="phone"
-                :class="{ invalid: !isValid.phone, valid: isValid.phone && phone }"
-              />
-              <img
-                v-if="!isValid.phone"
-                src="/public/Group 179.png"
-                alt="Invalid"
-                class="status-icon"
-              />
-              <img
-                v-else-if="isValid.phone && phone"
-                src="/public/Group 180.png"
-                alt="Valid"
-                class="status-icon"
-              />
-            </div>
-            <div class="app-recruitingForm__input-container">
-              <input
-                type="text"
-                placeholder="Email"
-                v-model="email"
-                :class="{ invalid: !isValid.email, valid: isValid.email && email }"
-              />
-              <img
-                v-if="!isValid.email"
-                src="/public/Group 179.png"
-                alt="Invalid"
-                class="status-icon"
-              />
-              <img
-                v-else-if="isValid.email && email"
-                src="/public/Group 180.png"
-                alt="Valid"
-                class="status-icon"
-              />
-            </div>
-            <div class="app-recruitingForm__input-container">
-              <input
-                type="text"
-                placeholder="Желаемая должность"
-                v-model="position"
-                :class="{ invalid: !isValid.position, valid: isValid.position && position }"
-              />
-              <img
-                v-if="!isValid.position"
-                src="/public/Group 179.png"
-                alt="Invalid"
-                class="status-icon"
-              />
-              <img
-                v-else-if="isValid.position && position"
-                src="/public/Group 180.png"
-                alt="Valid"
-                class="status-icon"
-              />
-            </div>
-          </div>
-          <h3>Выберите категорию занятости</h3>
-          <div class="app-recruitingForm__checkboxes">
-            <div class="app-recruitingForm__checkbox">
-              <input type="radio" name="employment" />
-              <p>Работа в офисе</p>
-            </div>
-            <div class="app-recruitingForm__checkbox">
-              <input type="radio" name="employment" />
-              <p>Стажировка</p>
-            </div>
-            <div class="app-recruitingForm__checkbox">
-              <input type="radio" name="employment" />
-              <p>Удаленная работа</p>
-            </div>
-          </div>
+            <h3>Выберите категорию занятости</h3>
 
-          <textarea placeholder="Ваши вопросы"></textarea>
+            <div class="app-recruitingForm__radio-group">
+              <label class="app-recruitingForm__radio-option">
+                <input
+                  id="employment-office"
+                  type="radio"
+                  name="employment"
+                  value="office"
+                  @change="employmentCategory = 'office'"
+                />
+                <span class="radio-custom"></span>
+                Работа в офисе
+              </label>
 
-          <div class="app-recruitingForm__buttons">
-            <div class="app-recruitingForm__resume">Прикрепить резюме</div>
-            <div class="app-recruitingForm__sign-up" @click="onSubmit">Записаться</div>
+              <label class="app-recruitingForm__radio-option">
+                <input
+                  id="employment-internship"
+                  type="radio"
+                  name="employment"
+                  value="internship"
+                  @change="employmentCategory = 'internship'"
+                />
+                <span class="radio-custom"></span>
+                Стажировка
+              </label>
+
+              <label class="app-recruitingForm__radio-option">
+                <input
+                  id="employment-remote"
+                  type="radio"
+                  name="employment"
+                  value="remote"
+                  @change="employmentCategory = 'remote'"
+                />
+                <span class="radio-custom"></span>
+                Удаленная работа
+              </label>
+            </div>
+
+            <textarea placeholder="Ваши вопросы"></textarea>
+
+            <div class="app-recruitingForm__buttons">
+              <label
+                for="resume-upload"
+                class="app-recruitingForm__resume"
+                :class="{ invalid: !isValid.resumeAttached }"
+                tabindex="0"
+                @mouseover="svgColor = '#9BCC37'"
+                @mouseleave="svgColor = '#fff'"
+              >
+                {{ resumeFile ? resumeFile.name : 'Прикрепить резюме' }}
+                <AppVector :color="svgColor" />
+              </label>
+              <input
+                id="resume-upload"
+                type="file"
+                accept=".pdf,.doc,.docx"
+                style="display: none"
+                @change="onFileChange"
+              />
+              <div class="app-recruitingForm__sign-up" @click="onSubmit">Записаться</div>
+            </div>
           </div>
         </form>
       </div>
@@ -164,28 +236,40 @@ export default defineComponent({
 </template>
 
 <style scoped>
+.app-recruitingForm__form {
+  max-width: 568px;
+  margin: 0 auto;
+}
+
 .app-recruitingForm__inputs {
   margin-bottom: 17px;
 }
 .app-recruitingForm__input-container {
   position: relative;
-  max-width: 568px;
-  margin: 0 auto 10px auto;
+
+  margin-bottom: 10px;
 }
 .app-recruitingForm__input-container > input {
   display: block;
   width: 100%;
-  padding: 10px 40px 10px 20px;
+  padding: 15px 40px 15px 16px;
   border-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(102, 102, 102, 0.9);
   font-size: 16px;
   color: #000;
   background-color: white;
   box-sizing: border-box;
 }
 
+.app-recruitingForm__input-container > input::placeholder {
+  font-weight: 300;
+  font-size: 18px;
+  color: rgba(102, 102, 102, 1);
+  opacity: 50%;
+}
+
 input.invalid {
-  border-color: #e74c3c;
+  border-color: rgba(253, 117, 131, 1);
 }
 
 input.valid {
@@ -194,24 +278,38 @@ input.valid {
 
 .status-icon {
   position: absolute;
-  right: 10px;
+  right: 23px;
   top: 50%;
-  width: 20px;
-  height: 20px;
+  width: 31px;
+  height: 31px;
   transform: translateY(-50%);
 }
 .app-recruitingForm__resume {
+  position: relative;
   display: inline-block;
   border-radius: 5px;
-  padding: 13px 13px;
+  padding: 13px 20px 13px 13px;
   background-color: rgba(155, 204, 55, 1);
   color: #fff;
   cursor: pointer;
   max-width: 270px;
   width: 100%;
   transition: all 0.3s ease;
-  border: 1px solid rgba(155, 204, 55, 1);
+  border: 2px solid rgba(155, 204, 55, 1);
+  user-select: none;
+  text-align: center;
 }
+.app-recruitingForm__resume.invalid {
+  border-color: #e74c3c;
+  background-color: #f8d7da;
+  color: #721c24;
+}
+.app-recruitingForm__resume:hover {
+  color: rgba(155, 204, 55, 1);
+  background-color: white;
+  border-color: rgba(155, 204, 55, 1);
+}
+
 .app-recruitingForm__sign-up {
   display: inline-block;
   border-radius: 5px;
@@ -222,11 +320,10 @@ input.valid {
   max-width: 218px;
   width: 100%;
   transition: all 0.3s ease;
-  border: 1px solid rgba(155, 204, 55, 1);
+  border: 2px solid rgba(155, 204, 55, 1);
   text-align: center;
   user-select: none;
 }
-.app-recruitingForm__resume:hover,
 .app-recruitingForm__sign-up:hover {
   color: rgba(155, 204, 55, 1);
   background-color: white;
@@ -267,55 +364,112 @@ input.valid {
   color: #fff;
   background-color: rgba(0, 183, 236, 1);
   padding: 50px;
+  opacity: 90%;
 }
-.app-recruitingForm > h3 {
-  font-weight: 300;
-  font-size: 36px;
+
+.app-recruitingForm__form > h3 {
+  font-weight: 700;
+  font-size: 18px;
   margin-bottom: 10px;
+  text-align: left;
 }
-.app-recruitingForm > h2 {
+
+.app-recruitingForm__form > h2 {
   font-weight: 300;
   font-size: 36px;
   margin-bottom: 18px;
 }
-.app-recruitingForm > textarea {
-  display: block;
+
+.app-recruitingForm__form > textarea {
   width: 100%;
-  max-width: 568px;
-  margin: 0 auto 17px auto;
+  margin-bottom: 17px;
   padding: 10px 20px;
   border-radius: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(102, 102, 102, 0.9);
   background-color: white;
   color: #000;
   height: 108px;
-  box-sizing: border-box;
+  resize: none;
 }
-.app-recruitingForm__checkboxes {
-  width: 100%;
-  max-width: 568px;
-  margin: 0 auto 17px auto;
-  text-align: left;
+
+.app-recruitingForm__form > textarea::placeholder {
+  font-weight: 300;
+  font-size: 18px;
+  color: rgba(102, 102, 102, 1);
+  opacity: 50%;
 }
-.app-recruitingForm__checkbox {
+
+.app-recruitingForm__radio-group {
+  margin-bottom: 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.app-recruitingForm__radio-option {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
   gap: 6px;
-}
-.app-recruitingForm__checkbox > p {
   font-weight: 400;
   font-size: 18px;
   color: #fff;
+  cursor: pointer;
 }
-.app-recruitingForm__checkbox > input {
-  margin: 0;
+
+.app-recruitingForm__radio-option input[type='radio'] {
+  display: none;
 }
+
+.app-recruitingForm__radio-option input[type='radio']:checked + .radio-custom {
+  border-color: white;
+}
+.app-recruitingForm__radio-option input[type='radio']:checked + .radio-custom::after {
+  display: block;
+}
+
+.radio-custom {
+  width: 16px;
+  height: 16px;
+  border: 1px solid white;
+  border-radius: 50%;
+  position: relative;
+}
+
+.radio-custom::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
 .app-recruitingForm__buttons {
-  width: 100%;
-  max-width: 568px;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .app-recruitingForm__buttons {
+    display: block;
+  }
+
+  .app-recruitingForm__resume {
+    max-width: 100%;
+    margin-bottom: 6px;
+  }
+
+  .app-recruitingForm__sign-up {
+    max-width: 100%;
+  }
+
+  .app-recruitingForm__form > textarea {
+    height: 50px;
+  }
 }
 </style>
